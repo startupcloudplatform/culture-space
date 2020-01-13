@@ -1,0 +1,49 @@
+<div class="wrapper">
+	<div class="content type-mng">
+		<div class="con-top">
+			<div class="background top-visual">
+				<div class="background-img">
+				</div>
+			</div>
+		</div>
+		<div class="con-body">
+			<div class="data-info mb-20">
+				<h3 class="mb-15">최신 데이터 정보</h3>
+				 <div class="data-list">
+					 <ul>
+						 <li>
+							 <span class="tit">최근 업데이트</span>
+							 <p class="txt" ng-model="manage.updatedDate" ng-if="manage.updatedDate!== null">{{manage.updatedDate | date:'yyyy년 MM월 dd일'}}</p>
+							 <p class="txt" ng-model="manage.updatedDate" ng-if="manage.updatedDate===null">-</p>
+						 </li>
+						 <li>
+							 <span class="tit">데이터 개수</span>
+							 <p class="txt" ng-model="manage.dataListLength">{{manage.dataListLength==null?'0':manage.dataListLength}}개</p>
+						 </li>
+					 </ul>
+				 </div>
+			</div>
+			<div class="value-box data-up">
+				<div>
+					<div class="mb-20">
+						<button class="btn point-col data" ng-click="manage.updateData()" >API로 업데이트하기</button>
+						<button class="btn point-col data" ng-click="manage.useExcelUpdate()" >EXCEL로 업데이트하기</button>
+					</div>
+					<div ng-hide="manage.useApiUpdate">
+						<input class="input-" type="file" ng-file-select="manage.onFileSelect($files)">
+					</div>
+				</div>
+				<div class="result-value">
+					<div class="loading-view" ng-if="manage.isUpdate === false">
+						<span class="value-img" ></span>
+						<p>업데이트 중입니다.</p>
+					</div>
+					<div class="com-view" ng-if="manage.isUpdate === true">
+						<span class="value-img"></span>
+						<p>데이터 업데이트가 완료되었습니다.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>MsXpert</title>
+<!-- common -->
+<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<!-- css 충돌 때문에 login-wrap 붙여서 별도로 login css 사용 -->
+<div class="login-wrap">
+	<!-- bg -->
+	<div class="lg-background">
+		<div class="lg-background-img">
+		</div>
+	</div>
+	<!-- //bg -->
+	<div class="login-container">
+		<div class="row">
+			<div class="col-md-12  back-col">
+				<div class="text-center">
+					<div class="logo-txt">
+						Login
+					</div>
+					<small>서울시 문화공간 검색 서비스 관리자</small>
+				</div>
+				<div class="hpanel">
+					<div class="panel-body">
+						<form role="form" ng-submit="login()">
+							<div class="form-group">
+								<label class="control-label" for="username">Username</label>
+								<input type="text" placeholder="example@gmail.com" title="아이디를 입력해주세요." required="true" ng-model="credentials.username" name="username" id="username" class="form-control">
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="password">Password</label>
+								<input type="password" title="비밀번호를 입력해주세요." placeholder="******" required="true" ng-model="credentials.password" name="password" id="password" class="form-control">
+							</div>
+							<div class="alert alert-danger" ng-show="error">
+								There was a problem logging in. Please try again.
+							</div>
+							<button class="btn btn-login btn-block" type="submit">로그인</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

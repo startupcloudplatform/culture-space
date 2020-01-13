@@ -1,0 +1,42 @@
+<div class="result-value" ng-if="checkResultView.num == 2">
+    <div class="tbl">
+        <table class="table">
+            <colgroup>
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
+                <col width="30%">
+                <col width="30%">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>문화공간명</th>
+                <th>종류</th>
+                <th>전화번호</th>
+                <th>홈페이지</th>
+                <th>주소</th>
+            </tr>
+            </thead>
+            <tbody ng-if="facilityList.length > 0" ng-repeat="facility in facilityList">
+                <tr>
+                    <td ng-value="facility.name">{{facility.name}}</td>
+                    <td class="match-txt" ng-value="facility.type.name">{{facility.type.name==null || facility.type.name==''?'-':facility.name}}</td>
+                    <td ng-value="facility.phone">{{facility.phone==null || facility.phone==''?'-':facility.phone}}</td>
+                    <td ng-if='facility.homepage == null || facility.homepage == "" || facility.homepage == "없음"'>-</td>
+                    <td ng-if='facility.homepage != null && facility.homepage != "" && facility.homepage != "없음" '><a href="{{facility.homepage==null?'-':facility.homepage}}" class="link" target="_blank">{{facility.homepage==null?'-':facility.homepage}}</a></td>
+                    <td ng-if='facility.address == null || facility.address == ""'>-</td>
+                    <td ng-if='facility.address != null && facility.address != "" '>
+                        <div  role="tab" id="headingTwo">
+                            <a ng-click="res.loadMap(facility.xCoord, facility.yCoord, facility.address, $index)" class="collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+                                {{facility.address}}
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-if="facility.xCoord != 0" id="result{{$index}}" class="hide" ng-include="'/views/portal/modalMap.html'"></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

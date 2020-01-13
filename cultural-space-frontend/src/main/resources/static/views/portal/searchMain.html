@@ -1,0 +1,32 @@
+<div class="wrapper">
+	<div class="content">
+		<div class="con-top">
+			<div class="background">
+				<div class="background-img">
+				</div>
+			</div>
+		</div>
+		<div class="total-sch-con">
+			<div class="row">
+				<div class="sch-bar">
+					<p class="txt">통합 검색</p>
+					<div class="input-txt w-100 text-center">
+						<input ng-keyup="$event.keyCode == 13 && main.clickSearchAll()" type="text" placeholder="찾는 곳을 검색해주세요." ng-disabled="useDetailSearch" class="form-control m-input" ng-model="main.keyword">
+						<span class="m-input-icon">
+							<i class="fa fa-search"></i>
+						</span>
+						<button class="button detail-search" ng-hide="isIntegratedSearch" ng-disabled="useDetailSearch" ng-click="main.searchDetail()">상세검색</button>
+						<button class="button detail-search" ng-hide="!isIntegratedSearch" ng-click="reset()">초기화</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-if="useDetailSearch == true" ng-include="detailBodytemplateUri"></div>
+		<div ng-if="useDetailSearch != true" class="con-body mt-30" ng-controller="searchResultCtrl as res">
+			<div class="category_detail value-box ">
+				<div ng-include="resultBodyStatusTemplatUri"></div>
+				<div ng-include="resultBodytemplateUri"></div>
+			</div>
+		</div>
+	</div>
+</div>

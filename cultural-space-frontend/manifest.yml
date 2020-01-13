@@ -1,0 +1,8 @@
+---
+applications:
+  - name: cultural-space-front
+    memory: 1G
+    path: target/culture-space-front-0.0.1-SNAPSHOT.jar
+    env:
+      msa: yes
+      private: user5

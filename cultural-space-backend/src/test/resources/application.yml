@@ -1,0 +1,12 @@
+cloud:
+  discovery:
+    enabled: false
+  service-registry:
+    auto-registration:
+      enabled: false
+
+#서울시 장르별 문화공간 현황
+openData:
+  market:
+    api: http://182.252.131.40:9000/apiservice/4328
+    authKey: 0543fgrib0ggh48ou4rtbgad1ov8820n8

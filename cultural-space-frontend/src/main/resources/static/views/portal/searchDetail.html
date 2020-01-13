@@ -1,0 +1,56 @@
+<div class="con-body mt-30" ng-controller="searchDetailCtrl as detail">
+	<h4>상세 검색</h4>
+	<div class="category_detail">
+		<dl class="select_depth">
+			<dt class="category"><span class="txt">종류</span></dt>
+			<dd>
+				<ul role="tablist" class="list_depth">
+					<li role="tab" ng-repeat="type in TypeList" >
+						<a ng-if="detail.sltType.name === type.name" style="color:#f4901c;" ng-click="detail.selectType(type)">{{type.name}}</a>
+						<a ng-if="detail.sltType.name != type.name" ng-click="detail.selectType(type)">{{type.name}}</a>
+					</li>
+
+				</ul>
+			</dd>
+		</dl>
+		<dl class="select_depth">
+			<dt class="local"><span class="txt">위치</span></dt>
+			<dd>
+				<ul role="tablist" class="list_depth" id="scrollExhibitAreas">
+					<li role="tab">
+						<a ng-if="detail.sltAddress === addressTypeList[0]" style="color:#f4901c;" ng-click="detail.selectAddress(addressTypeList[0])">{{addressTypeList[0]}}</a>
+						<a ng-if="detail.sltAddress !== addressTypeList[0]" ng-click="detail.selectAddress(addressTypeList[0])">{{addressTypeList[0]}}</a>
+					</li>
+					<li role="tab">
+						<a ng-if="detail.sltAddress !== '' && detail.sltAddress !== addressTypeList[0]" style="color:#f4901c;" ng-click="openModalPopup()" >주소 입력</a>
+						<a ng-if="detail.sltAddress === '' || detail.sltAddress === addressTypeList[0] " type="button" ng-click="openModalPopup()" >주소 입력</a>
+					</li>
+					<li role="tab">
+						<label ng-hide="detail.sltAddress === addressTypeList[0] || detail.sltAddress === ''">{{detail.sltAddress.toString()}}</label>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl class="select_depth">
+			<dt class="period"><span class="txt">요금</span></dt>
+			<dd>
+				<ul role="tablist" class="list_depth">
+					<li role="tab" ng-repeat="fee in feeGroupList" >
+						<a ng-if="detail.sltFee.name === fee.name" style="color:#f4901c;" ng-click="detail.selectFee(fee)">{{fee.name}}</a>
+						<a ng-if="detail.sltFee.name != fee.name" ng-click="detail.selectFee(fee)">{{fee.name}}</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+	<div style="text-align: center">
+		<button class="button clean" ng-click="reset()"> 초기화 </button>
+		<button class="button search" ng-click="detail.listByTypeAndFeeAndAddress()"> 검색 </button>
+	</div>
+	<div class="con-body mt-30" ng-controller="searchResultCtrl as res">
+		<div class="category_detail value-box ">
+			<div ng-include="resultBodyStatusTemplatUri"></div>
+			<div ng-include="resultBodytemplateUri"></div>
+		</div>
+	</div>
+</div>

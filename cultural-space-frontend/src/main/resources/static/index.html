@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="culturalSpaceApp">
+<script type="text/javascript">
+    var _USER_INFO_CASHE_NAME_ = "admin.user";
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>cultural space app</title>
+
+    <!-- jquery -->
+    <script src="js/components/jquery-1.11.3.min.js"></script>
+    <script src="js/components/jquery-ui.js"></script>
+    <script src="js/components/jquery.jscrollpane.js"></script>
+    <script src="js/components/jquery.mousewheel.js"></script>
+    <script src="js/components/jquery.scrolling-tabs.js"></script>
+
+    <!-- angularjs -->
+    <script src="webjars/angularjs/1.7.7/angular.js"></script>
+    <script src="webjars/angularjs/1.7.7/angular-route.js"></script>
+    <script src="webjars/angularjs/1.7.7/angular-cookies.min.js"></script>
+    <script src="webjars/angularjs/1.7.7/angular-resource.min.js"></script>
+    <script src="webjars/angular-file-upload/1.6.1/angular-file-upload.min.js"></script>
+    <script src="webjars/angular-file-upload/1.6.1/angular-file-upload-shim.min.js"></script>
+    <script src="webjars/angular-file-upload/1.6.1/angular-file-upload-html5-shim.min.js"></script>
+    <script src="js/components/angular-local-storage.js"></script>
+
+    <!-- bootstrap -->
+    <script src="js/components/bootstrap.min.js"></script>
+    <script src="js/components/bootstrap-slider.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.5.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/components/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/components/bootstrap-slider.css">
+    <link rel="stylesheet" type="text/css" href="css/components/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/components/ionic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/components/jquery.jscrollpane.css">
+    <link rel="stylesheet" type="text/css" href="css/components/jquery.scrolling-tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/components/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/contents.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/notosanskr.css">
+
+    <!-- controller -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/searchController.js"></script>
+    <script src="js/controllers/adminController.js"></script>
+    <script src="js/controllers/CommonControllers.js"></script>
+    <script src="js/controllers/CommonServices.js"></script>
+
+    <!-- kakao map -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={appkey를 입력해주세요}"></script>
+
+<body ng-controller="mainCtrl as main">
+<div class="loader-container" ng-show="loadingMain" ng-include="'/views/mainLoading.html'"></div>
+<div id="wrap" class="body-wrap">
+    <!-- header -->
+    <header id="header">
+        <div class="inner">
+            <div id="logo" class="light-version">
+                <h1>서울시 문화공간 검색 서비스</h1>
+                <div ng-hide="isAuthenticated" class="lg-btn"><a ng-click="signIn()">Sign in</a></div>
+                <form ng-hide="!isAuthenticated" role="form" ng-click="logout()"><button class="lg-btn" type="submit">logout</button></form>
+            </div>
+        </div>
+    </header>
+    <div ng-view ></div>
+</div>
+</body>
+</html>
+
